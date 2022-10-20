@@ -3,7 +3,14 @@ const commentRouter = express.Router()
 
 //Recuperer tous les Commentaiere 
 commentRouter.get('/', (req, res) => {
-
+    try {
+        res.status(200)
+        res.send("Liste des commentaires")
+    } catch (e) {
+        res.status(400)
+        res.send("E")
+        console.log(e)
+    }
 })
 
 //Recuperer tous les commentaire d'un utilisateur pour un post
@@ -25,3 +32,6 @@ commentRouter.put('/:id', (req, res) => {
 commentRouter.delete('/', (req, res) => {
 
 })
+
+
+export { commentRouter }

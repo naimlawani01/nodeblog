@@ -3,7 +3,14 @@ const postRouter = express.Router()
 
 //Recuperer tous les posts 
 postRouter.get('/', (req, res) => {
-
+    try {
+        res.status(200)
+        res.send("Liste des postes")
+    } catch (e) {
+        res.status(400)
+        res.send("E")
+        console.log(e)
+    }
 })
 
 //Recuperer tous les posts pour un utilisateur
@@ -25,3 +32,6 @@ postRouter.put('/:id', (req, res) => {
 postRouter.delete('/', (req, res) => {
 
 })
+
+
+export { postRouter }
