@@ -1,4 +1,4 @@
-import { getAll } from "./CommentRepositoryModel"
+import { getAll } from "./CommentRepositoryModel.js"
 
 export class Comment{
     id

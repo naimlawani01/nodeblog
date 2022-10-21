@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { PostModel } from '../post/PostRepositoryModel';
+import { PostModel } from '../post/PostRepositoryModel.js';
 
 export const CommentSchema = new mongoose.Schema({
     id: String,
