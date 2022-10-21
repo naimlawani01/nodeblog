@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose';
 import { postRouter } from './app/post/PostApi.js';
 import { commentRouter } from './app/comment/CommentApi.js';
+import { userRouter } from './app/user/UserApi.js';
 import BodyParser from 'body-parser'
 export const app = express();
 
@@ -16,6 +17,7 @@ app.use(BodyParser.urlencoded({ extended: true }));
 
 app.use('/posts', postRouter)
 app.use('/comments', commentRouter)
+app.use('/users', userRouter)
 
 
 export const db = mongoose.connection;

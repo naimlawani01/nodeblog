@@ -1,4 +1,6 @@
-export class Post {
+import { getAll } from "./CommentRepositoryModel"
+
+export class Comment{
     id
     comment
     user_id
@@ -8,6 +10,11 @@ export class Post {
         this.comment = title
         this.user_id = user_id
     }
-
+    addComment(idPost){
+        return 
+    }
+    getComments(idPost){
+        return getAll(idPost)
+    }
 
 }
