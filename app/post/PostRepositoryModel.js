@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { CommentSchema } from '../comment/CommentRepositoryModel'
+import { CommentSchema } from '../comment/CommentRepositoryModel.js'
 
 export const PostSchema = new mongoose.Schema({
     id: String,
@@ -12,7 +12,9 @@ export const PostSchema = new mongoose.Schema({
 
 export const PostModel = mongoose.model('Post', PostSchema);
 
-export const getall = () => {}
+export const getAll = async() => {
+    return await PostModel.find()
+}
 export const save = () => {}
 export const update = () => {}
 export const deletepost = () => {}

@@ -1,3 +1,5 @@
+import { getAll } from "./PostRepositoryModel.js"
+
 export class Post {
     id
     title
@@ -13,6 +15,7 @@ export class Post {
         this.comments = comments
     }
 
-
-
+    getAllPost() {
+        return getAll()
+    }
 }

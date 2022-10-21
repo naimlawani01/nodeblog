@@ -1,11 +1,13 @@
 import express from 'express';
+import { Post } from './PostModel.js';
 const postRouter = express.Router()
 
 //Recuperer tous les posts 
-postRouter.get('/', (req, res) => {
+postRouter.get('/', async(req, res) => {
     try {
         res.status(200)
-        res.send("Liste des postes")
+        const posts = new Post()
+        res.send(await posts.getAllPost())
     } catch (e) {
         res.status(400)
         res.send("E")
