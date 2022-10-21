@@ -1,24 +1,32 @@
 import express from 'express'
-const UserRouter = express.Router()
+const userRouter = express.Router()
 //Recuperer un utilisateur
-UserRouter.get('/', (req, res)=>{
+userRouter.get('/', (req, res)=>{
 
+    try {
+        res.status(200)
+        res.send("Liste des utilisateurs")
+    } catch (e) {
+        res.status(400)
+        res.send("E")
+        console.log(e)
+    }
 })
 //Inscription utilisateur
-UserRouter.post('/', (req, res)=>{
+userRouter.post('/', (req, res)=>{
 
 })
 //Modifier un utilisateur
-userRouter.update('/:userid' , (req, res)=>{
+userRouter.put('/:userid' , (req, res)=>{
 
 })
 //Suprimer un utilisateur
-serRouter.delete('/:userid', (req, res)=>{
+userRouter.delete('/:userid', (req, res)=>{
 
 })
 
 
-
+export { userRouter }
 
 
 

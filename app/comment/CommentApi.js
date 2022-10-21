@@ -1,11 +1,13 @@
 import express from 'express';
+import { Comment } from './CommentModel.js';
 const commentRouter = express.Router()
 
 //Recuperer tous les Commentaiere 
-commentRouter.get('/', (req, res) => {
+commentRouter.get('/:idPost', async (req, res) => {
     try {
         res.status(200)
-        res.send("Liste des commentaires")
+        const comments = new Comment()
+        res.send(await comments.getComments(idPost))
     } catch (e) {
         res.status(400)
         res.send("E")
