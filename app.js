@@ -8,7 +8,7 @@ export const app = express();
 
 export const connection = async() => {
     console.log('base de donnée connectée')
-    await mongoose.connect('mongodb+srv://ayoubm:bLAsfK6QPvSI2zVA@cluster0.pqsbndn.mongodb.net/test');
+    await mongoose.connect('mongodb+srv://imrane:imrane@cluster0.qp6or6l.mongodb.net/nodeblog');
 }
 
 app.use(BodyParser.json());
