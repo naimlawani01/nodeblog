@@ -50,7 +50,7 @@ postRouter.post('/', (req, res) => {
 })
 
 //Modifier  un post 
-postRouter.get('/:idPost', async(req, res) => {
+postRouter.put('/:idPost', async(req, res) => {
     try{
         res.status(200)
         let idPost = req.params.idPost
