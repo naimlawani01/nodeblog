@@ -1,10 +1,11 @@
 import mongoose from 'mongoose'
 import { PostModel } from '../post/PostRepositoryModel.js';
+import {UserSchema} from '../user/UserRepositoryModel.js';
 
 export const CommentSchema = new mongoose.Schema({
     id: String,
     text: String,
-    user_id: String,
+    user_id: UserSchema,
 }, { timestamps: true })
 
 export const CommentModel = mongoose.model('Comment', CommentSchema);

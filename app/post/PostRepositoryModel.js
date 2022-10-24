@@ -1,11 +1,12 @@
 import mongoose from 'mongoose'
 import { CommentSchema } from '../comment/CommentRepositoryModel.js'
+import {UserSchema} from '../user/UserRepositoryModel.js';
 
 export const PostSchema = new mongoose.Schema({
     id: String,
     title: String,
     content: String,
-    user_id: String,
+    user_id: UserSchema,
     comments: [CommentSchema],
 }, { timestamps: true })
 

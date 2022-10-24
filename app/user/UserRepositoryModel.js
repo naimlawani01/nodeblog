@@ -1,20 +1,24 @@
 import mongoose from 'mongoose'
-import { stringify } from 'querystring'
-import { UserSchema } from '../user/UserRepositoryModel'
+import {UserSchema} from '../user/UserRepositoryModel.js'
 
 export const UserSchema = new mongoose.Schema({
-    id: string,
-    nom : string,
-    prenom : string,
-    email : string,
-    password: string,
+    id: String,
+    nom: String,
+    prenom: String,
+    email: String,
+    password: String,
+}, { timestamps: true })
 
-    })
+export const UserModel = mongoose.model('User', UserSchema);
 
-    export const UserModel = mongoose.model('User ' , UserSchema);
+export const getAll = async() => {
+    return await  UserModel.find()
+}
 
-    export const getall= ()=>{}
-    export const save= ()=>{}
-    export const update= ()=>{}
-    export const deleteuser= ()=>{}
+export const save = () => {
+}
+export const update = () => {
+}
+export const deleteuser = () => {
+}
 
