@@ -1,4 +1,4 @@
-import {getAll} from "./UserRepositoryModel";
+import {getAll, save} from "./UserRepositoryModel.js";
 
 export class User {
     id
@@ -17,6 +17,10 @@ export class User {
 
     getAllUser() {
         return getAll()
+    }
+
+    addUser(user){
+        return save(user)
     }
 
 }

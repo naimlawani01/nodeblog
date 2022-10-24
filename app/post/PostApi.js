@@ -17,15 +17,26 @@ postRouter.get('/', async(req, res) => {
 
 // Recuperer un post 
 postRouter.get('/:id', async(req, res) => {
+    console.log('11111111111111')
     try {
-        res.status(200)
+        console.log('222222222222222')
+        //res.status(200)
+        console.log('3333333333')
         let id = req.params.id
+        console.log('444444444444')
         const posts = new Post()
+        console.log('55555555555')
         res.send(await posts.findPost(id))
+        console.log('66666666666666')
+        res.status(200)
     } catch (e) {
+        console.log('7777777777777')
         res.status(400)
+        console.log('888888888888')
         res.send("E")
+        console.log('99999999999')
         console.log(e)
+        console.log('1010101010101010101')
     }
 })
 

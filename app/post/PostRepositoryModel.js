@@ -40,6 +40,8 @@ export const deletePost = async(id) => {
 
 
 export const findPostbyId = async($idPost) => {
-
+    console.log('1313131313131313131')
     return await PostModel.findById($idPost)
+    console.log('141414141414141414')
 }
+
