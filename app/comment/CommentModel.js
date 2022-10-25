@@ -1,4 +1,4 @@
-import { getAll, save } from "./CommentRepositoryModel.js"
+import { getAll, save, updateComment, deleteComment} from "./CommentRepositoryModel.js"
 
 export class Comment {
     text
@@ -16,6 +16,13 @@ export class Comment {
     }
     getUserCommentsServices(idPost, userId) {
         return getUserComments(idPost, userId)
+    }
+
+    modifycomment(idComment, data){
+        return updateComment(idComment, data)
+    }
+    deleteCommentServices(idComment){
+        return deleteComment(idComment)
     }
 
 }

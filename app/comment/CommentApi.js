@@ -50,12 +50,38 @@ commentRouter.post('/:idPost', async(req, res) => {
 })
 
 //Modifier  un commentaire d'un post 
-commentRouter.put('/:id', (req, res) => {
+commentRouter.put('/:idComment', async (req, res) => {
+    try{
+        let idComment =  req.params.idComment
+        let data = {
+            text: req.body.text
+        }
+
+        console.log(data)
+        const comments = new Comment()
+        res.status(200)
+        res.send(await comments.modifycomment(idComment, data))
+    } catch(e){
+        res.status(400)
+        res.send('Database Error')
+        console.error(e)
+    }
 
 })
 
 //Supprimer un commentaire d'un poste 
-commentRouter.delete('/', (req, res) => {
+commentRouter.delete('/:idComment', async(req, res) => {
+    try{
+        res.status(200)
+        let idComment = req.params.idComment
+        const comments = new Comment()
+        res.send(await comments.deleteCommentServices(idComment))
+    } catch(e){
+        res.status(400)
+        res.send('Database Error')
+        console.error(e)
+    }
+
 
 })
 

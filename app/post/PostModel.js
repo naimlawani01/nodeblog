@@ -26,9 +26,7 @@ export class Post {
         return updatePost(idPost,data)
     }
     findPost(idPost){
-        console.log('888888888888888888888888')
         return findPostbyId(idPost)
-        console.log('101010101010101010101010')
     }
     deletePostServices(id){
         return deletePost(id)

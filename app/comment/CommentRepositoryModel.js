@@ -20,5 +20,22 @@ export const save = async(comment, idPost) => {
 
     })
 }
-export const update = () => {}
+
+// Modifier un commentaire
+export const updateComment = async(idComment, data) => {
+
+
+    return await PostModel.updateOne({'comments._id': idComment}, {'$set': {'comments.$.text': data.text}} )
+    
+    
+
+}
+
+// Supprimer un post
+export const deleteComment = async(idComment) => {
+    // get tableau commentaire
+    // supprmer l'element avec l'id
+
+    return await PostModel.updateOne({ 'comments._id': idComment }, {'$set': {'comments': nvtableau}})
+}
 export const getUserComments = async(idPost, userId) => {}
