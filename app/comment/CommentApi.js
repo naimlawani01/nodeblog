@@ -2,12 +2,12 @@ import express from 'express';
 import { Comment } from './CommentModel.js';
 const commentRouter = express.Router()
 
-//Recuperer tous les Commentaiere 
+//Recuperer tous les Commentaiere d'un post
 commentRouter.get('/:idPost', async(req, res) => {
     try {
         res.status(200)
-        let idPost = req.params.idPost
         const comments = new Comment()
+        let idPost = req.params.idPost
         res.send(await comments.getComments(idPost))
     } catch (e) {
         res.status(400)

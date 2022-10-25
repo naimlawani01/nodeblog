@@ -17,12 +17,19 @@ postRouter.get('/', async(req, res) => {
 
 // Recuperer un post 
 postRouter.get('/:id', async(req, res) => {
+    console.log('111111111111111111111111')
     try {
+        console.log('222222222222222222222222')
         res.status(200)
+        console.log('333333333333333333333333')
         let id = req.params.id
+        console.log('444444444444444444444444')
         const posts = new Post()
+        console.log('555555555555555555555555')
         res.send(await posts.findPost(id))
+        console.log('666666666666666666666666')
     } catch (e) {
+        console.log('777777777777777777777777')
         res.status(400)
         res.send("E")
         console.log(e)
@@ -50,7 +57,7 @@ postRouter.post('/', (req, res) => {
 })
 
 //Modifier  un post 
-postRouter.get('/:idPost', async(req, res) => {
+postRouter.put('/:idPost', async(req, res) => {
     try{
         res.status(200)
         let idPost = req.params.idPost
