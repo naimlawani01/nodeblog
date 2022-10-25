@@ -1,4 +1,5 @@
 import express from 'express';
+import { getUserId } from '../middleware/auth.js';
 import { Post } from './PostModel.js';
 const postRouter = express.Router()
 
@@ -32,7 +33,7 @@ postRouter.get('/:id', async(req, res) => {
 
 //Creer un post (Ajouter un post )
 postRouter.post('/', (req, res) => {
-    try{
+    try {
         res.status(200)
         let post = new Post(req.body.id, req.body.title, req.body.content, req.body.user_id, [])
 
@@ -40,7 +41,7 @@ postRouter.post('/', (req, res) => {
         post.addPost(post)
 
         res.send('ok')
-    } catch(e){
+    } catch (e) {
         res.status(400)
         res.send('Database Error')
         console.error(e)
@@ -51,16 +52,16 @@ postRouter.post('/', (req, res) => {
 
 //Modifier  un post 
 postRouter.put('/:idPost', async(req, res) => {
-    try{
+    try {
         res.status(200)
         let idPost = req.params.idPost
         let data = {
             title: req.body.title,
-            content: req.body.content  
+            content: req.body.content
         }
         const posts = new Post()
-        res.send(await posts.modifyPost(idPost,data))
-    } catch(e){
+        res.send(await posts.modifyPost(idPost, data))
+    } catch (e) {
         res.status(400)
         res.send('Database Error')
         console.error(e)
@@ -70,12 +71,12 @@ postRouter.put('/:idPost', async(req, res) => {
 
 //Supprimer un poste 
 postRouter.delete('/:id', async(req, res) => {
-    try{
+    try {
         res.status(200)
         let id = req.params.id
         const posts = new Post()
         res.send(await posts.deletePostServices(id))
-    } catch(e){
+    } catch (e) {
         res.status(400)
         res.send('Database Error')
         console.error(e)
@@ -84,6 +85,6 @@ postRouter.delete('/:id', async(req, res) => {
 })
 
 
-//Recuperer tous les posts pour un utilisateur
+
 
 export { postRouter }

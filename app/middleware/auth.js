@@ -6,7 +6,6 @@ export const auth = (req, res, next) => {
         const token = req.headers.authorization.split(' ')[1];
         const decodedToken = jwt.verify(token, JWT_SIGN_SECRET);
 
-        console.log(decodedToken)
         const userId = decodedToken.userId;
         req.auth = {
             userId: userId
@@ -16,4 +15,14 @@ export const auth = (req, res, next) => {
     } catch (error) {
         res.status(401).json({ error });
     }
+}
+
+
+export const getUserId = () => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, JWT_SIGN_SECRET);
+
+    const userId = decodedToken.userId;
+
+    return userId
 }
