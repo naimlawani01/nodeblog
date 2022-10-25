@@ -1,4 +1,4 @@
-import { deletePost, findPostbyId, getAll, save, updatePost } from "./PostRepositoryModel.js"
+import { deletePost, findPostbyId, getAll, getAllUserPost, save, updatePost } from "./PostRepositoryModel.js"
 
 export class Post {
     id
@@ -18,17 +18,20 @@ export class Post {
     getAllPost() {
         return getAll()
     }
-    addPost(post){
+    addPost(post) {
         return save(post)
     }
 
-    modifyPost(idPost,data){
-        return updatePost(idPost,data)
+    modifyPost(idPost, data) {
+        return updatePost(idPost, data)
     }
-    findPost(idPost){
+    findPost(idPost) {
         return findPostbyId(idPost)
     }
-    deletePostServices(id){
+    deletePostServices(id) {
         return deletePost(id)
+    }
+    getAllUserPostServices(userId) {
+        return getAllUserPost(userId)
     }
 }

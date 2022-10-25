@@ -35,6 +35,12 @@ commentRouter.get('/:userId/:idPost', async(req, res) => {
 commentRouter.post('/:idPost', async(req, res) => {
     try {
         res.status(200)
+        var user_id = req.body.user_id
+        var text = req.body.text
+
+        if (user_id == null || text == null) {
+            return res.send({ error: "Tous les champs sont requis" })
+        }
         let idPost = req.params.idPost
         let comment = new Comment(req.body.text, req.body.user_id)
 

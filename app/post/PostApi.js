@@ -1,5 +1,4 @@
 import express from 'express';
-import { getUserId } from '../middleware/auth.js';
 import { Post } from './PostModel.js';
 const postRouter = express.Router()
 
@@ -35,12 +34,20 @@ postRouter.get('/:id', async(req, res) => {
 postRouter.post('/', (req, res) => {
     try {
         res.status(200)
+        var id = req.body.id
+        var title = req.body.title
+        var content = req.body.content
+        var user_id = req.body.user_id
+
+        if (id == null || title == null || content == null || user_id == null) {
+            return res.send({ error: "Tous les champs sont requis" })
+        }
         let post = new Post(req.body.id, req.body.title, req.body.content, req.body.user_id, [])
 
 
         post.addPost(post)
 
-        res.send('ok')
+        res.send('Bien ajouté')
     } catch (e) {
         res.status(400)
         res.send('Database Error')
