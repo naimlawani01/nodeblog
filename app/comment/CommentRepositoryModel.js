@@ -34,6 +34,7 @@ export const updateComment = async(idComment, data) => {
 // Supprimer un post
 export const deleteComment = async(idComment) => {
     // get tableau commentaire
+
     // supprmer l'element avec l'id
 
     return await PostModel.updateOne({ 'comments._id': idComment }, {'$set': {'comments': nvtableau}})
