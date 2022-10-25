@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import { generateTokenForUser, JWT_SIGN_SECRET } from '../utils/jwt.utils.js'
 import { User } from './UserModel.js'
 import { Post } from '../post/PostModel.js'
+import { UserModel } from './UserRepositoryModel.js'
 const userRouter = express.Router()
 
 //Recuperer tous les utilisateur
@@ -128,8 +129,8 @@ userRouter.get('/userpost', async(req, res) => {
         const userId = decodedToken.userId;
 
         let posts = new Post()
+        console.log(userId)
         res.send(await posts.getAllUserPostServices(userId))
-        res.send(userId)
     } catch (e) {
         res.status(400)
         res.send("E")
