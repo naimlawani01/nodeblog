@@ -10,7 +10,9 @@ export const UserSchema = new mongoose.Schema({
 
 export const UserModel = mongoose.model('User', UserSchema);
 
-export const getall = () => {}
+export const getAll= async() => {
+    return await UserModel.find()
+}
 export const save = (user) => {
     console.log(user)
     let post_object = new UserModel({
@@ -28,4 +30,6 @@ export const save = (user) => {
 export const exitUser = async(email) => {
     await UserModel.findOne({ email: email }).exec();
 }
-export const deleteuser = () => {}
+export const deleteUser = async(idUser) => {
+    return await UserModel.deleteOne({ _id: idUser })
+}

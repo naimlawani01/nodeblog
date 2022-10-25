@@ -34,7 +34,8 @@ export const updateComment = async(idComment, data) => {
 // Supprimer un post
 export const deleteComment = async(idCommennt, idPost) => {
     // get tableau commentaire
-    let posts = await PostModel.findById(idPost)
+
+    // supprmer l'element avec l'id
 
     var i = posts.comments.filter((val) => {
             con

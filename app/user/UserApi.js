@@ -2,20 +2,22 @@ import express from 'express'
 import bcrypt from 'bcrypt'
 import { generateTokenForUser } from '../utils/jwt.utils.js'
 import { User } from './UserModel.js'
-import { UserModel } from './UserRepositoryModel.js'
 const userRouter = express.Router()
-    //Recuperer un utilisateur
-userRouter.get('/', (req, res) => {
+
+    //Recuperer tous les utilisateur
+userRouter.get('/', async(req, res) => {
 
     try {
         res.status(200)
-        res.send("Liste des utilisateurs")
+        const users = new User()
+        res.send(await users.getAllUser())
     } catch (e) {
         res.status(400)
         res.send("E")
         console.log(e)
     }
 })
+//ajouter (connecter) un utilisateur
 userRouter.post('/login', (req, res) => {
         try {
             res.status(200)
@@ -55,7 +57,7 @@ userRouter.post('/login', (req, res) => {
             console.log(e)
         }
     })
-    //Modifier un utilisateur
+    //ajout (s'inscrire)un utilisateur
 userRouter.post('/signup', (req, res) => {
     try {
 
@@ -100,6 +102,19 @@ userRouter.post('/signup', (req, res) => {
 
 
 })
+//Supprimer un utlisateur
+userRouter.delete('/:idUser', async(req, res) => {
+    try{
+        res.status(200)
+        let idUser = req.params.idUser
+        const users = new User()
+        res.send(await users.deleteUserServices(idUser))
+    } catch(e){
+        res.status(400)
+        res.send('Database Error')
+        console.error(e)
+    }
+}) 
 
 
 export { userRouter }
