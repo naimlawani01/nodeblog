@@ -17,7 +17,7 @@ app.use(BodyParser.urlencoded({ extended: true }));
 
 app.use('/posts', postRouter)
 app.use('/comments', commentRouter)
-app.use('/users', userRouter)
+app.use('/api', userRouter)
 
 
 export const db = mongoose.connection;

@@ -1,20 +1,21 @@
-import { getAll } from "./CommentRepositoryModel.js"
+import { getAll, save } from "./CommentRepositoryModel.js"
 
-export class Comment{
-    id
-    comment
+export class Comment {
+    text
     user_id
 
-    constructor(id, title, comment, user_id) {
-        this.id = id
-        this.comment = title
+    constructor(text, user_id) {
+        this.text = text
         this.user_id = user_id
     }
-    addComment(idPost){
-        return 
+    addComment(comment, idPost) {
+        return save(comment, idPost)
     }
-    getComments(idPost){
+    getComments(idPost) {
         return getAll(idPost)
+    }
+    getUserCommentsServices(idPost, userId) {
+        return getUserComments(idPost, userId)
     }
 
 }
