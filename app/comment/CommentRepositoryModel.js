@@ -10,7 +10,7 @@ import { PostModel } from '../post/PostRepositoryModel.js';
 // export const CommentModel = mongoose.model('Comment', CommentSchema);
 
 export const getAll = async(idPost) => {
-    return await PostModel.findById(idPost).select('comments')
+    return await PostModel.findById(idPost)
 }
 export const save = async(comment, idPost) => {
     return await PostModel.updateOne({ _id: idPost }, {
@@ -25,17 +25,26 @@ export const save = async(comment, idPost) => {
 export const updateComment = async(idComment, data) => {
 
 
-    return await PostModel.updateOne({'comments._id': idComment}, {'$set': {'comments.$.text': data.text}} )
-    
-    
+    return await PostModel.updateOne({ 'comments._id': idComment }, { '$set': { 'comments.$.text': data.text } })
+
+
 
 }
 
 // Supprimer un post
-export const deleteComment = async(idComment) => {
+export const deleteComment = async(idCommennt, idPost) => {
     // get tableau commentaire
-    // supprmer l'element avec l'id
+    let posts = await PostModel.findById(idPost)
 
-    return await PostModel.updateOne({ 'comments._id': idComment }, {'$set': {'comments': nvtableau}})
+    var i = posts.comments.filter((val) => {
+            con
+            console.log(`new ObjectId("${idCommennt}")`)
+            val._id.toString() != idCommennt
+            console.log(val._id.toString())
+        })
+        // posts.comments.slice(i, 1)
+    console.log(i)
+
+    return 'Ok'
 }
 export const getUserComments = async(idPost, userId) => {}
