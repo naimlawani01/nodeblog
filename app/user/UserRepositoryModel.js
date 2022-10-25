@@ -1,20 +1,31 @@
 import mongoose from 'mongoose'
-import { stringify } from 'querystring'
-import { UserSchema } from '../user/UserRepositoryModel'
 
 export const UserSchema = new mongoose.Schema({
-    id: string,
-    nom : string,
-    prenom : string,
-    email : string,
-    password: string,
+    nom: String,
+    prenom: String,
+    email: String,
+    password: String
+
+})
+
+export const UserModel = mongoose.model('User', UserSchema);
+
+export const getall = () => {}
+export const save = (user) => {
+    console.log(user)
+    let post_object = new UserModel({
+        nom: user.nom,
+        prenom: user.prenom,
+        email: user.email,
+        password: user.password
 
     })
 
-    export const UserModel = mongoose.model('User ' , UserSchema);
-
-    export const getall= ()=>{}
-    export const save= ()=>{}
-    export const update= ()=>{}
-    export const deleteuser= ()=>{}
-
+    post_object.save((err) => {
+        if (err) throw 'Save recountered a problem'
+    })
+}
+export const exitUser = async(email) => {
+    await UserModel.findOne({ email: email }).exec();
+}
+export const deleteuser = () => {}
