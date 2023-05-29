@@ -10,14 +10,14 @@ export const app = express();
 
 export const connection = async() => {
     console.log('base de donnée connectée')
-    await mongoose.connect('mongodb+srv://imrane:imrane@cluster0.qp6or6l.mongodb.net/nodeblog');
+    await mongoose.connect('mongodb+srv://imraneb:boss@cluster0.qp6or6l.mongodb.net/nodeblog');
 }
 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
-app.use('/posts', auth, postRouter)
-app.use('/comments', auth, commentRouter)
+app.use('/posts', postRouter)
+app.use('/comments', commentRouter)
 app.use('/api', userRouter)
 
 
